@@ -106,4 +106,4 @@ Supported in all modern, evergreen browsers supporting CSS Custom Properties (`v
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
