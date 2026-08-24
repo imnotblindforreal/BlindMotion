@@ -119,6 +119,32 @@
   --blind-backInRight-ease: var(--blind-default-back);
   --blind-backInRight-distance: 120px;
   --blind-backInRight-scale: 0.7;
+
+  --blind-pulse-duration: 1s;
+  --blind-pulse-scale: 1.05;
+  --blind-heartbeat-duration: 1.3s;
+  --blind-ping-duration: 1s;
+  --blind-glow-pulse-duration: 2s;
+  --blind-glow-pulse-color: rgba(56, 189, 248, 0.6);
+
+  --blind-shakeX-duration: 0.8s;
+  --blind-shakeY-duration: 0.8s;
+  --blind-headShake-duration: 1s;
+  --blind-jello-duration: 0.9s;
+  --blind-wobble-duration: 1s;
+  --blind-rubberBand-duration: 1s;
+
+  --blind-bounce-duration: 1s;
+  --blind-bounce-distance: -20px;
+  --blind-floatSoft-duration: 3s;
+  --blind-floatSoft-distance: -10px;
+  --blind-bobVertical-duration: 1.5s;
+  --blind-bobVertical-distance: -15px;
+
+  --blind-flash-duration: 1s;
+  --blind-tada-duration: 1s;
+  --blind-swing-duration: 1s;
+  --blind-hinge-duration: 2s;
 }
 
 .blind-animated {
@@ -436,4 +462,213 @@
   0% { opacity: 0.7; transform: translateX(var(--blind-backInRight-distance)) scale(var(--blind-backInRight-scale)); }
   80% { opacity: 0.7; transform: translateX(0) scale(var(--blind-backInRight-scale)); }
   100% { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   PULSING
+   ========================================================================== */
+
+.blind-pulse {
+  animation-name: blind-pulse;
+  animation-duration: var(--blind-pulse-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-pulse {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  50% { transform: scale3d(var(--blind-pulse-scale), var(--blind-pulse-scale), var(--blind-pulse-scale)); }
+}
+
+.blind-heartbeat {
+  animation-name: blind-heartbeat;
+  animation-duration: var(--blind-heartbeat-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+.blind-ping {
+  animation-name: blind-ping;
+  animation-duration: var(--blind-ping-duration);
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+}
+@keyframes blind-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.blind-glowPulse {
+  animation-name: blind-glowPulse;
+  animation-duration: var(--blind-glow-pulse-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--blind-glow-pulse-color); }
+  50% { box-shadow: 0 0 20px 10px var(--blind-glow-pulse-color); }
+}
+
+.blind-shakeX {
+  animation-name: blind-shakeX;
+  animation-duration: var(--blind-shakeX-duration);
+}
+@keyframes blind-shakeX {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% { transform: translate3d(10px, 0, 0); }
+}
+
+.blind-shakeY {
+  animation-name: blind-shakeY;
+  animation-duration: var(--blind-shakeY-duration);
+}
+@keyframes blind-shakeY {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate3d(0, -10px, 0); }
+  20%, 40%, 60%, 80% { transform: translate3d(0, 10px, 0); }
+}
+
+.blind-headShake {
+  animation-name: blind-headShake;
+  animation-duration: var(--blind-headShake-duration);
+  animation-timing-function: ease-in-out;
+}
+@keyframes blind-headShake {
+  0% { transform: translateX(0) rotateY(0); }
+  6.5% { transform: translateX(-6px) rotateY(-9deg); }
+  18.5% { transform: translateX(5px) rotateY(7deg); }
+  31.5% { transform: translateX(-3px) rotateY(-5deg); }
+  43.5% { transform: translateX(2px) rotateY(3deg); }
+  50% { transform: translateX(0) rotateY(0); }
+}
+
+.blind-jello {
+  animation-name: blind-jello;
+  animation-duration: var(--blind-jello-duration);
+  transform-origin: center;
+}
+@keyframes blind-jello {
+  11.1% { transform: translate3d(0, 0, 0); }
+  22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.blind-wobble {
+  animation-name: blind-wobble;
+  animation-duration: var(--blind-wobble-duration);
+}
+@keyframes blind-wobble {
+  0% { transform: translate3d(0, 0, 0); }
+  15% { transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% { transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% { transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% { transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% { transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.blind-rubberBand {
+  animation-name: blind-rubberBand;
+  animation-duration: var(--blind-rubberBand-duration);
+}
+@keyframes blind-rubberBand {
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+.blind-bounce {
+  animation-name: blind-bounce;
+  animation-duration: var(--blind-bounce-duration);
+}
+@keyframes blind-bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translate3d(0, 0, 0); }
+  40%, 43% { transform: translate3d(0, var(--blind-bounce-distance), 0); }
+  70% { transform: translate3d(0, calc(var(--blind-bounce-distance) / 2), 0); }
+  90% { transform: translate3d(0, calc(var(--blind-bounce-distance) / 5), 0); }
+}
+
+.blind-floatSoft {
+  animation-name: blind-floatSoft;
+  animation-duration: var(--blind-floatSoft-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-floatSoft {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, var(--blind-floatSoft-distance), 0); }
+}
+
+.blind-bobVertical {
+  animation-name: blind-bobVertical;
+  animation-duration: var(--blind-bobVertical-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-bobVertical {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, var(--blind-bobVertical-distance), 0); }
+}
+
+.blind-flash {
+  animation-name: blind-flash;
+  animation-duration: var(--blind-flash-duration);
+}
+@keyframes blind-flash {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.blind-tada {
+  animation-name: blind-tada;
+  animation-duration: var(--blind-tada-duration);
+}
+@keyframes blind-tada {
+  0% { transform: scale3d(1, 1, 1); }
+  10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+.blind-swing {
+  animation-name: blind-swing;
+  animation-duration: var(--blind-swing-duration);
+  transform-origin: top center;
+}
+@keyframes blind-swing {
+  20% { transform: rotate3d(0, 0, 1, 15deg); }
+  40% { transform: rotate3d(0, 0, 1, -10deg); }
+  60% { transform: rotate3d(0, 0, 1, 5deg); }
+  80% { transform: rotate3d(0, 0, 1, -5deg); }
+  100% { transform: rotate3d(0, 0, 1, 0deg); }
+}
+
+.blind-hinge {
+  animation-name: blind-hinge;
+  animation-duration: var(--blind-hinge-duration);
+  transform-origin: top left;
+  animation-timing-function: ease-in-out;
+}
+@keyframes blind-hinge {
+  0% { transform: rotate(0); }
+  20%, 60% { transform: rotate(80deg); }
+  40%, 80% { transform: rotate(60deg); opacity: 1; }
+  100% { transform: translate3d(0, 700px, 0) rotate(80deg); opacity: 0; }
 }
