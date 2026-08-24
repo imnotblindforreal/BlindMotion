@@ -1,0 +1,87 @@
+:root {
+  --blind-fadeIn-duration: var(--blind-default-duration);
+  --blind-fadeIn-ease: var(--blind-default-ease);
+
+  --blind-fadeOut-duration: var(--blind-default-duration);
+  --blind-fadeOut-ease: var(--blind-default-ease);
+
+  --blind-fadeInUp-duration: var(--blind-default-duration);
+  --blind-fadeInUp-ease: var(--blind-default-ease);
+  --blind-fadeInUp-distance: 30px;
+
+  --blind-fadeInDown-duration: var(--blind-default-duration);
+  --blind-fadeInDown-ease: var(--blind-default-ease);
+  --blind-fadeInDown-distance: 30px;
+
+  --blind-fadeInLeft-duration: var(--blind-default-duration);
+  --blind-fadeInLeft-ease: var(--blind-default-ease);
+  --blind-fadeInLeft-distance: 30px;
+
+  --blind-fadeInRight-duration: var(--blind-default-duration);
+  --blind-fadeInRight-ease: var(--blind-default-ease);
+  --blind-fadeInRight-distance: 30px;
+}
+
+.blind-animated {
+  animation-fill-mode: both;
+}
+
+.blind-fadeIn {
+  animation-name: blind-fadeIn;
+  animation-duration: var(--blind-fadeIn-duration);
+  animation-timing-function: var(--blind-fadeIn-ease);
+}
+@keyframes blind-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.blind-fadeOut {
+  animation-name: blind-fadeOut;
+  animation-duration: var(--blind-fadeOut-duration);
+  animation-timing-function: var(--blind-fadeOut-ease);
+}
+@keyframes blind-fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.blind-fadeInUp {
+  animation-name: blind-fadeInUp;
+  animation-duration: var(--blind-fadeInUp-duration);
+  animation-timing-function: var(--blind-fadeInUp-ease);
+}
+@keyframes blind-fadeInUp {
+  from { opacity: 0; transform: translate3d(0, var(--blind-fadeInUp-distance), 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.blind-fadeInDown {
+  animation-name: blind-fadeInDown;
+  animation-duration: var(--blind-fadeInDown-duration);
+  animation-timing-function: var(--blind-fadeInDown-ease);
+}
+@keyframes blind-fadeInDown {
+  from { opacity: 0; transform: translate3d(0, calc(-1 * var(--blind-fadeInDown-distance)), 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.blind-fadeInLeft {
+  animation-name: blind-fadeInLeft;
+  animation-duration: var(--blind-fadeInLeft-duration);
+  animation-timing-function: var(--blind-fadeInLeft-ease);
+}
+@keyframes blind-fadeInLeft {
+  from { opacity: 0; transform: translate3d(calc(-1 * var(--blind-fadeInLeft-distance)), 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.blind-fadeInRight {
+  animation-name: blind-fadeInRight;
+  animation-duration: var(--blind-fadeInRight-duration);
+  animation-timing-function: var(--blind-fadeInRight-ease);
+}
+@keyframes blind-fadeInRight {
+  from { opacity: 0; transform: translate3d(var(--blind-fadeInRight-distance), 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
