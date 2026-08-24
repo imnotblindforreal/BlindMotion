@@ -91,6 +91,10 @@ Modify individual animation properties directly on specific elements or scoped C
 | **Bounce** | `blind-bounceIn`, `blind-bounceInUp`, `blind-bounceInDown`, `blind-bounceInLeft`, `blind-bounceInRight` | `--blind-(bounceName)-duration`, `--blind-(bounceName)-ease`, `--blind-(bounceName)-distance` |
 | **Rotate** | `blind-rotateIn`, `blind-rotateInDownLeft`, `blind-rotateInDownRight`, `blind-rotateInUpLeft` | `--blind-(rotateName)-duration`, `--blind-(rotateName)-ease`, `--blind-(rotateName)-angle` |
 | **Back** | `blind-backInDown`, `blind-backInUp`, `blind-backInLeft`, `blind-backInRight` | `--blind-(backName)-duration`, `--blind-(backName)-ease`, `--blind-(backName)-distance`, `--blind-(backName)-scale` |
+| **Pulsing** | `blind-pulse`, `blind-heartbeat`, `blind-ping`, `blind-glowPulse` | `--blind-(pulseName)-duration`, `--blind-pulse-scale`, `--blind-glow-pulse-color` |
+| **Shaking** | `blind-shakeX`, `blind-shakeY`, `blind-headShake`, `blind-jello`, `blind-wobble`, `blind-rubberBand` | `--blind-(shakeName)-duration` |
+| **Bouncing & Floating** | `blind-bounce`, `blind-floatSoft`, `blind-bobVertical` | `--blind-(bounceName)-duration`, `--blind-(bounceName)-distance` |
+| **Alerts** | `blind-flash`, `blind-tada`, `blind-swing`, `blind-hinge` | `--blind-(alertName)-duration` |
 ---
 
 ## Browser Support
