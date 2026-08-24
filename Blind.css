@@ -464,10 +464,6 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* ==========================================================================
-   PULSING
-   ========================================================================== */
-
 .blind-pulse {
   animation-name: blind-pulse;
   animation-duration: var(--blind-pulse-duration);
