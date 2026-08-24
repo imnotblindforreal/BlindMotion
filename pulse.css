@@ -1,0 +1,58 @@
+:root {
+  --blind-pulse-duration: 1s;
+  --blind-pulse-scale: 1.05;
+  --blind-heartbeat-duration: 1.3s;
+  --blind-ping-duration: 1s;
+  --blind-glow-pulse-duration: 2s;
+  --blind-glow-pulse-color: rgba(56, 189, 248, 0.6);
+}
+
+.blind-animated {
+  animation-fill-mode: both;
+}
+
+.blind-pulse {
+  animation-name: blind-pulse;
+  animation-duration: var(--blind-pulse-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-pulse {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  50% { transform: scale3d(var(--blind-pulse-scale), var(--blind-pulse-scale), var(--blind-pulse-scale)); }
+}
+
+.blind-heartbeat {
+  animation-name: blind-heartbeat;
+  animation-duration: var(--blind-heartbeat-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+.blind-ping {
+  animation-name: blind-ping;
+  animation-duration: var(--blind-ping-duration);
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+}
+@keyframes blind-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.blind-glowPulse {
+  animation-name: blind-glowPulse;
+  animation-duration: var(--blind-glow-pulse-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes blind-glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--blind-glow-pulse-color); }
+  50% { box-shadow: 0 0 20px 10px var(--blind-glow-pulse-color); }
+}
