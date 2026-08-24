@@ -1,0 +1,61 @@
+:root {
+  --blind-slideInUp-duration: var(--blind-default-duration);
+  --blind-slideInUp-ease: var(--blind-default-ease);
+  --blind-slideInUp-distance: 100%;
+
+  --blind-slideInDown-duration: var(--blind-default-duration);
+  --blind-slideInDown-ease: var(--blind-default-ease);
+  --blind-slideInDown-distance: 100%;
+
+  --blind-slideInLeft-duration: var(--blind-default-duration);
+  --blind-slideInLeft-ease: var(--blind-default-ease);
+  --blind-slideInLeft-distance: 100%;
+
+  --blind-slideInRight-duration: var(--blind-default-duration);
+  --blind-slideInRight-ease: var(--blind-default-ease);
+  --blind-slideInRight-distance: 100%;
+}
+
+.blind-animated {
+  animation-fill-mode: both;
+}
+
+.blind-slideInUp {
+  animation-name: blind-slideInUp;
+  animation-duration: var(--blind-slideInUp-duration);
+  animation-timing-function: var(--blind-slideInUp-ease);
+}
+@keyframes blind-slideInUp {
+  from { transform: translate3d(0, var(--blind-slideInUp-distance), 0); visibility: visible; }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+.blind-slideInDown {
+  animation-name: blind-slideInDown;
+  animation-duration: var(--blind-slideInDown-duration);
+  animation-timing-function: var(--blind-slideInDown-ease);
+}
+@keyframes blind-slideInDown {
+  from { transform: translate3d(0, calc(-1 * var(--blind-slideInDown-distance)), 0); visibility: visible; }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+.blind-slideInLeft {
+  animation-name: blind-slideInLeft;
+  animation-duration: var(--blind-slideInLeft-duration);
+  animation-timing-function: var(--blind-slideInLeft-ease);
+}
+@keyframes blind-slideInLeft {
+  from { transform: translate3d(calc(-1 * var(--blind-slideInLeft-distance)), 0, 0); visibility: visible; }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+.blind-slideInRight {
+  animation-name: blind-slideInRight;
+  animation-duration: var(--blind-slideInRight-duration);
+  animation-timing-function: var(--blind-slideInRight-ease);
+}
+@keyframes blind-slideInRight {
+  from { transform: translate3d(var(--blind-slideInRight-distance), 0, 0); visibility: visible; }
+  to { transform: translate3d(0, 0, 0); }
+}
