@@ -145,6 +145,25 @@
   --blind-tada-duration: 1s;
   --blind-swing-duration: 1s;
   --blind-hinge-duration: 2s;
+
+  --blind-hover-scale-grow: 1.05;
+  --blind-hover-scale-shrink: 0.95;
+  --blind-hover-tilt-angle: 4deg;
+  --blind-hover-push-distance: 4px;
+  --blind-hover-duration: 0.3s;
+  --blind-hover-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  --blind-sweep-color: #38bdf8;
+  --blind-sweep-duration: 0.4s;
+
+  --blind-glow-border-color: #38bdf8;
+  --blind-shadow-3d-color: rgba(0, 0, 0, 0.4);
+  --blind-underline-color: #38bdf8;
+  --blind-underline-height: 2px;
+  --blind-outline-pulse-color: rgba(56, 189, 248, 0.5);
+
+  --blind-icon-duration: 0.3s;
+  --blind-icon-bounce-distance: -5px;
 }
 
 .blind-animated {
@@ -667,4 +686,188 @@
   20%, 60% { transform: rotate(80deg); }
   40%, 80% { transform: rotate(60deg); opacity: 1; }
   100% { transform: translate3d(0, 700px, 0) rotate(80deg); opacity: 0; }
+}
+
+.blind-hover-grow {
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+  will-change: transform;
+}
+.blind-hover-grow:hover, .blind-hover-grow:focus {
+  transform: scale(var(--blind-hover-scale-grow));
+}
+
+.blind-hover-shrink {
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+  will-change: transform;
+}
+.blind-hover-shrink:hover, .blind-hover-shrink:focus {
+  transform: scale(var(--blind-hover-scale-shrink));
+}
+
+.blind-hover-tilt {
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+  will-change: transform;
+}
+.blind-hover-tilt:hover, .blind-hover-tilt:focus {
+  transform: rotate(var(--blind-hover-tilt-angle));
+}
+
+.blind-hover-push {
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+  will-change: transform;
+}
+.blind-hover-push:hover, .blind-hover-push:focus {
+  transform: translateY(var(--blind-hover-push-distance));
+}
+
+.blind-hover-pop {
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+  will-change: transform;
+}
+.blind-hover-pop:hover, .blind-hover-pop:focus {
+  animation: blind-hoverPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes blind-hoverPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(var(--blind-hover-scale-grow)); }
+}
+
+
+.blind-sweep-to-right,
+.blind-sweep-to-left,
+.blind-fill-up,
+.blind-radial-out {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color var(--blind-sweep-duration) ease;
+}
+
+.blind-sweep-to-right::before,
+.blind-sweep-to-left::before,
+.blind-fill-up::before,
+.blind-radial-out::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: var(--blind-sweep-color);
+  transition: transform var(--blind-sweep-duration) var(--blind-hover-ease);
+}
+
+.blind-sweep-to-right::before {
+  top: 0; left: 0; right: 0; bottom: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.blind-sweep-to-right:hover::before, .blind-sweep-to-right:focus::before {
+  transform: scaleX(1);
+}
+
+.blind-sweep-to-left::before {
+  top: 0; left: 0; right: 0; bottom: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.blind-sweep-to-left:hover::before, .blind-sweep-to-left:focus::before {
+  transform: scaleX(1);
+}
+
+.blind-fill-up::before {
+  top: 0; left: 0; right: 0; bottom: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+.blind-fill-up:hover::before, .blind-fill-up:focus::before {
+  transform: scaleY(1);
+}
+
+.blind-radial-out::before {
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  transform: scale(0);
+  transform-origin: center;
+}
+.blind-radial-out:hover::before, .blind-radial-out:focus::before {
+  transform: scale(2.5);
+}
+
+
+.blind-glow-border {
+  transition: border-color var(--blind-hover-duration) ease, box-shadow var(--blind-hover-duration) ease;
+}
+.blind-glow-border:hover, .blind-glow-border:focus {
+  border-color: var(--blind-glow-border-color);
+  box-shadow: 0 0 15px var(--blind-glow-border-color);
+}
+
+.blind-shadow-drop-3d {
+  transition: transform var(--blind-hover-duration) ease, box-shadow var(--blind-hover-duration) ease;
+}
+.blind-shadow-drop-3d:hover, .blind-shadow-drop-3d:focus {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0px var(--blind-shadow-3d-color);
+}
+
+.blind-underline-reveal {
+  position: relative;
+}
+.blind-underline-reveal::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: var(--blind-underline-height);
+  background-color: var(--blind-underline-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--blind-hover-duration) var(--blind-hover-ease);
+}
+.blind-underline-reveal:hover::after, .blind-underline-reveal:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.blind-outline-pulse {
+  transition: outline-offset var(--blind-hover-duration) ease, outline var(--blind-hover-duration) ease;
+  outline: 2px solid transparent;
+}
+.blind-outline-pulse:hover, .blind-outline-pulse:focus {
+  outline: 2px solid var(--blind-outline-pulse-color);
+  outline-offset: 6px;
+}
+
+
+
+.blind-icon-spin-hover,
+.blind-icon-bounce-hover,
+.blind-icon-wiggle {
+  display: inline-block;
+  transition: transform var(--blind-icon-duration) ease;
+  will-change: transform;
+}
+
+:hover > .blind-icon-spin-hover,
+.blind-icon-spin-hover:hover, 
+.blind-icon-spin-hover:focus {
+  transform: rotate(360deg);
+}
+
+:hover > .blind-icon-bounce-hover,
+.blind-icon-bounce-hover:hover, 
+.blind-icon-bounce-hover:focus {
+  transform: translateY(var(--blind-icon-bounce-distance));
+}
+
+:hover > .blind-icon-wiggle,
+.blind-icon-wiggle:hover, 
+.blind-icon-wiggle:focus {
+  animation: blind-iconWiggle var(--blind-icon-duration) ease-in-out;
+}
+
+@keyframes blind-iconWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
 }
